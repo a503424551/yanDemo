@@ -15,14 +15,14 @@ public class HistogramViewActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
- /*  HistogramView histogramView =new HistogramView(this);
+  HistogramView histogramView =new HistogramView(this);
        getHistogramView(histogramView);
-        setContentView(histogramView); */
+        setContentView(histogramView);
 
 
-        setContentView(R.layout.histogram_view);
+ /*       setContentView(R.layout.histogram_view);
         HistogramView histogramView = findViewById(R.id.hv);
-        getHistogramView(histogramView);
+        getHistogramView(histogramView);*/
     }
 
 

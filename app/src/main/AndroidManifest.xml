@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".HistogramViewActivity" android:screenOrientation="landscape"/>
         <activity android:name=".CircleActivity" android:screenOrientation="landscape"/>
+        <activity android:name=".RightAngleProgressActivity" android:screenOrientation="landscape"/>
     </application>
 
 </manifest>

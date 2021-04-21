@@ -29,6 +29,13 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        findViewById(R.id.right_angle_progress).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent=new Intent(MainActivity.this,RightAngleProgressActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }

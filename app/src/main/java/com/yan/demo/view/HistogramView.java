@@ -25,10 +25,10 @@ public class HistogramView extends View {
     private final int xTextMarnBottom = 20;//x轴距离底部长度
     private int marg = 50;//整个图表距离父控件长度
     private float indexY;
-    private Paint paintWiriteYX,//画xy轴画笔
-            paintWiriteYLines,//画y轴刻度线画笔
-            paintWiriteRect,//画柱形画笔
-            paintWiriteXName;//画x轴名称画笔
+    private Paint  paintWiriteYX = new Paint(),//画xy轴画笔
+            paintWiriteYLines = new Paint(),//画y轴刻度线画笔
+            paintWiriteRect = new Paint(),//画柱形画笔
+           paintWiriteXName = new Paint();;//画x轴名称画笔
 
     private int oneWidth;
     private List<ColumnBean> columnBeans;
@@ -77,10 +77,9 @@ public class HistogramView extends View {
             Toast.makeText(getContext(), "请设置x轴显示柱状图个数", Toast.LENGTH_SHORT).show();
             return;
         }
-        paintWiriteRect = new Paint();
+
         paintWiriteRect.setColor(Color.BLUE);
-        paintWiriteXName = new Paint();
-        paintWiriteXName.setColor(Color.WHITE);
+         paintWiriteXName.setColor(Color.WHITE);
 
         if ((columnMarn * xLabelConut + columnWidth * xLabelConut) > getWidth() - 2 * marg) {
             oneWidth = (getWidth() - 2 * marg) / xLabelConut;//一个柱状和柱状之间距离的总长度
@@ -113,7 +112,7 @@ public class HistogramView extends View {
             return;
         }
         //Y轴刻度线自上向下画，第一条不画  所以y轴刻度线多画一条
-        paintWiriteYLines = new Paint();
+
         paintWiriteYLines.setStrokeWidth(2);
         paintWiriteYLines.setColor(Color.WHITE);
         yHeight = (getHeight() - marg * 2) / (yLabelConut + 1);//Y轴两点之间距离=整个宽度-左右两边的边距
@@ -135,7 +134,7 @@ public class HistogramView extends View {
     }
 
     private void paintXY(Canvas canvas) {
-        paintWiriteYX = new Paint();
+
         //开始直方图绘制
         //我们首先绘制竖向的一条黑色直线
         paintWiriteYX.setColor(Color.WHITE);
