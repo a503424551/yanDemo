@@ -16,16 +16,16 @@ public class CircleActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        CircleBar circleBar = new CircleBar(this);
+   /*     CircleBar circleBar = new CircleBar(this);
         circleBar.setValueAndColors(values, color);
         circleBar.postInvalidate();
-        setContentView(circleBar);
+        setContentView(circleBar);*/
 
-/*
+
         setContentView(R.layout.circle);
         circleBar  =findViewById(R.id.circle);
         circleBar.setValueAndColors(values,color);
-        circleBar.postInvalidate();*/
+        circleBar.postInvalidate();
     }
 
 

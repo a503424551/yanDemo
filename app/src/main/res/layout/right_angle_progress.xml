@@ -3,10 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 <com.yan.demo.view.RightAngleProgress
-    android:background="@android:color/holo_blue_bright"
-    android:id="@+id/rap"
+     android:id="@+id/rap"
     android:layout_width="match_parent"
-    android:layout_height="60dp"/>
+    android:layout_height="wrap_content"/>
 
 
 </LinearLayout>

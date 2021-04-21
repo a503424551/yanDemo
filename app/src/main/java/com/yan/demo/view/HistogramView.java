@@ -45,17 +45,16 @@ public class HistogramView extends View {
 
     public HistogramView(Context context) {
         super(context);
-        setBackgroundColor(Color.BLACK);
+        setBackgroundColor(Color.BLACK);//new 时调用
     }
 
     public HistogramView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setBackgroundColor(Color.BLACK);
+        setBackgroundColor(Color.BLACK);//加载布局时调用
     }
 
     public HistogramView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        setBackgroundColor(Color.BLACK);
     }
 
 
@@ -64,6 +63,11 @@ public class HistogramView extends View {
         super.onDraw(canvas);
         if (columnBeans == null) {
             return;
+        }
+        if(xLabelConut*(columnMarn+columnWidth)>getWidth()-marg*2){
+            xLabelConut=((getWidth()-marg*2)/(int)(columnMarn+columnWidth));
+            Toast.makeText(getContext(),"传入柱状总数过多，无法按照默认柱状宽度的间隔画出，" +
+                    "顾按默认定义柱状宽度和间隔画最大柱状个数，",1).show();
         }
 
         paintXY(canvas);
