@@ -4,6 +4,7 @@
     ![Image text](https://github.com/a503424551/yanDemo/blob/master/image/circle.png)  
 2  自定义圆环占比， 
     功能：可动态设置圆环占比的类型个数和每个类型的颜色  
-        ![Image text](https://github.com/a503424551/yanDemo/blob/master/image/histogramView.png)  
+    ![Image text](https://github.com/a503424551/yanDemo/blob/master/image/histogramView.png)  
 3  自定义直角进度  
     功能：可动态设置水平进度圆圈个数  
+     ![Image text](https://github.com/a503424551/yanDemo/blob/master/image/rightAngleProgress.png)  
