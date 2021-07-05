@@ -16,6 +16,7 @@ import com.yan.demo.R;
 public class CylinderView extends View {
 
 
+    private int arcRadius;
 
     public CylinderView(Context context) {
         super(context);
@@ -34,12 +35,18 @@ public class CylinderView extends View {
           int firstBottom;
           int height;
         Paint paint = new Paint();
-        //顶部圆弧方形
+        //顶部画圆弧方形的左边距离app左边
         left = 100;
+        //顶部画圆弧方形的顶部距离视图顶部的距离
         firstTop = 50;
+        //顶部画圆弧方形的右边距离app左边
         right = 160;
+        //顶部画圆弧方形的底部距离视图顶部的距离
         firstBottom = 100;
+        //中间柱形高度
         height = 300;
+        //圆弧半径
+        arcRadius = (firstBottom - firstTop) / 2;
         RectF rectF = new RectF(left, firstTop, right, firstBottom);
      //   canvas.drawRect(rectF, paint);
 
@@ -50,7 +57,8 @@ public class CylinderView extends View {
 
         //中间柱形
        // paint.setColor(Color.RED);
-        RectF rectF2 = new RectF(left, firstBottom-((firstBottom-firstTop)/2), right, firstBottom + height+((firstBottom-firstTop)/2));
+
+        RectF rectF2 = new RectF(left, firstBottom- arcRadius, right, firstBottom + height+arcRadius);
         canvas.drawRect(rectF2, paint);
 
         //底部圆弧方形
