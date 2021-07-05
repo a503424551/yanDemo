@@ -21,4 +21,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="自定义进度"/>
+    <Button
+        android:id="@+id/CylinderView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="自定义柱状图2"/>
 </LinearLayout>

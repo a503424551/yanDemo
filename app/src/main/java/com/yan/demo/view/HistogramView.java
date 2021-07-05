@@ -148,7 +148,7 @@ public class HistogramView extends View {
         canvas.drawLine(marg, marg, marg, getHeight() - marg, paintWiriteYX);//y轴
         //然后依葫芦画瓢画一条横向的黑色直线 与上面这条竖着的直线 组成一个x轴和y轴
         canvas.drawLine(marg, getHeight() - marg, getWidth() - marg, getHeight() - marg, paintWiriteYX);
-        paintWiriteYX = null;
+
     }
 }
 
