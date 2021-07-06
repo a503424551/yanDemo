@@ -21,6 +21,7 @@ public class CylinderView extends View {
     private int cylinderColorBlue = Color.parseColor("#1CCFFA");
     private int cylinderColorGray = Color.parseColor("#D3D3D3");
     private int buttomTextColor=Color.parseColor("#3FC282");
+    private int topTextColor=Color.parseColor("#E89D23");
     private float cylinderWith = 50;
     private float arcRadius = cylinderWith / 2;
     private float cylinderMargin = 80;
@@ -39,6 +40,11 @@ public class CylinderView extends View {
     //柱状图表两两条线间的高度
     private float linesHight;
     private float linesValue;
+    //顶部标签距离视图顶部的Y轴坐标
+    private int topTextOffset = 55;
+    //从左往右数第一个柱状图距离Y轴便签的距离
+    private int  firstMarginLeft = 45;
+
     public CylinderView(Context context) {
         super(context);
     }
@@ -80,8 +86,9 @@ public class CylinderView extends View {
         float [] tem=new float[]{ 8,15,18,4,20,22,};
         for (int j = 0; j < 5; j++) {
             paint.setColor(cylinderColorGray);
-            leftForIndex = marginLeft + cylinderMargin * j + cylinderWith * j;
-            rightForIndex = marginLeft + cylinderMargin * j + cylinderWith * j + cylinderWith;
+
+            leftForIndex = marginLeft + cylinderMargin * j + cylinderWith * j+ firstMarginLeft;
+            rightForIndex = marginLeft + cylinderMargin * j + cylinderWith * j + cylinderWith+firstMarginLeft;
             //循环画柱状图顶部半圆
             RectF rectF = new RectF(leftForIndex, marginTop,
                     rightForIndex, marginTop + cylinderWith);
@@ -92,7 +99,7 @@ public class CylinderView extends View {
                     getHeight() - marginButtom - arcRadius);
             canvas.drawRect(rectF2, paint);
             //循环画柱状图底部半圆
-            RectF rectF3 = new RectF(leftForIndex, marginTop + linesHight * 4 + linesHight - cylinderWith, rightForIndex,
+            RectF rectF3 = new RectF(leftForIndex, getHeight()-marginButtom-cylinderWith, rightForIndex,
                     getHeight() - marginButtom);
             canvas.drawArc(rectF3, 0, 180, true, paint);
 
@@ -112,6 +119,10 @@ public class CylinderView extends View {
             canvas.drawRect(rectBlueMiddle,paint);
 
              canvas.drawArc(rectF3,0,180,true,paint);
+
+            paint.setColor(topTextColor);
+
+            canvas.drawText(new Float(yMaxValue).intValue()+"",leftForIndex, topTextOffset,paint);
 
         }
 
