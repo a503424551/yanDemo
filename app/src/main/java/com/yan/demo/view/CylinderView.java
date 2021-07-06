@@ -17,16 +17,23 @@ public class CylinderView extends View {
     private int[] verticalTexts = new int[]{25, 20, 15, 10, 5, 0};
     //左边垂直坐标文字向下偏移量
     private float verticalTextButtomOffset = 10;
+    //左边垂直坐标文字X轴坐标
     private float verticalTextLeftOffset = 20;
     private int cylinderColorBlue = Color.parseColor("#1CCFFA");
     private int cylinderColorGray = Color.parseColor("#D3D3D3");
     private int buttomTextColor=Color.parseColor("#3FC282");
     private int topTextColor=Color.parseColor("#E89D23");
+    //柱状图宽度
     private float cylinderWith = 50;
+    //柱状图顶部半圆半径
     private float arcRadius = cylinderWith / 2;
+    //柱状图间的间隔
     private float cylinderMargin = 80;
+    //批量画柱状图时左边的X轴坐标
     private float leftForIndex;
+    //批量画柱状图时右边边的X轴坐标
     private float rightForIndex;
+    //柱状图底部标签文字相对X轴向下的偏移量
     private float  bottomTextDownOffset = 35;
 
     private float yMaxValue=25;
