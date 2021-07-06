@@ -16,7 +16,17 @@ public class CylinderView extends View {
     private Paint paint = new Paint();
     private int[] verticalTexts = new int[]{25, 20, 15, 10, 5, 0};
     //左边垂直坐标文字向下偏移量
-    private int verticalTextButtomoffset = 10;
+    private float verticalTextButtomOffset = 10;
+    private float verticalTextLeftOffset = 20;
+    private int cylinderColorBlue = Color.parseColor("#1CCFFA");
+    private int cylinderColorGray = Color.parseColor("#D3D3D3");
+    private int buttomTextColor=Color.parseColor("#3FC282");
+    private float cylinderWith = 50;
+    private float arcRadius = cylinderWith / 2;
+    private float cylinderMargin = 80;
+    private float leftForIndex;
+    private float rightForIndex;
+    private int  bottomTextDownOffset = 35;
 
     public CylinderView(Context context) {
         super(context);
@@ -44,14 +54,60 @@ public class CylinderView extends View {
         canvas.drawLine(marginLeft, marginTop, getWidth() - marginRight, marginTop, paint);
         //画顶部第一根坐标值
         paint.setColor(verticalTextColor);
-        canvas.drawText(verticalTexts[0] + "", 20, marginTop + verticalTextButtomoffset, paint);
+
+        canvas.drawText(verticalTexts[0] + "", verticalTextLeftOffset, marginTop + verticalTextButtomOffset, paint);
+
+      /*  paint.setColor(cylinderColorGray);
+        paint.setStyle(Paint.Style.FILL);*/
+
+  /*     RectF rectF = new RectF(marginLeft, marginTop, marginLeft+ cylinderWith, marginTop+ cylinderWith);
+   canvas.drawArc(rectF, -180, 180, true, paint); */
+
+      /*  RectF rectF2 = new RectF(marginLeft, marginTop + cylinderWith /2, marginLeft+ cylinderWith,
+                getHeight()-marginButtom-arcRadius);
+        canvas.drawRect(rectF2, paint);*/
+
+      /*  RectF rectF3 = new RectF(marginLeft, marginTop +linesHight*4+linesHight-cylinderWith, marginLeft+ cylinderWith,
+                getHeight()-marginButtom);
+        canvas.drawArc(rectF3, 0, 180, true, paint);*/
+
+
         //画剩余第坐标线和坐标值
         for (int i = 1; i < 6; i++) {
             paint.setColor(lineColor);
             canvas.drawLine(marginLeft, marginTop + linesHight * i, getWidth() - marginRight, marginTop + linesHight * i, paint);
             paint.setColor(verticalTextColor);
-            canvas.drawText(verticalTexts[i] + "", 20, marginTop + linesHight * i + verticalTextButtomoffset, paint);
+            canvas.drawText(verticalTexts[i] + "", verticalTextLeftOffset, marginTop + linesHight * i + verticalTextButtomOffset, paint);
+
+
         }
+
+
+        paint.setStyle(Paint.Style.FILL);
+        for (int j = 0; j < 5; j++) {
+            paint.setColor(cylinderColorGray);
+            leftForIndex = marginLeft + cylinderMargin * j + cylinderWith * j;
+            rightForIndex = marginLeft + cylinderMargin * j + cylinderWith * j + cylinderWith;
+            //循环画柱状图顶部半圆
+            RectF rectF = new RectF(leftForIndex, marginTop,
+                    rightForIndex, marginTop + cylinderWith);
+            canvas.drawArc(rectF, -180, 180, true, paint);
+            //循环画柱状图中间方形
+            RectF rectF2 = new RectF(leftForIndex, marginTop + cylinderWith / 2,
+                    rightForIndex,
+                    getHeight() - marginButtom - arcRadius);
+            canvas.drawRect(rectF2, paint);
+            //循环画柱状图底部半圆
+            RectF rectF3 = new RectF(leftForIndex, marginTop + linesHight * 4 + linesHight - cylinderWith, rightForIndex,
+                    getHeight() - marginButtom);
+            canvas.drawArc(rectF3, 0, 180, true, paint);
+
+            paint.setColor(buttomTextColor);
+            paint.setTextSize(35);
+            canvas.drawText("3001",leftForIndex-verticalTextLeftOffset,getHeight()-marginButtom+ bottomTextDownOffset,paint);
+            canvas.drawText("张大嘴",leftForIndex-verticalTextLeftOffset,getHeight()-marginButtom+   bottomTextDownOffset*2.2f ,paint);
+        }
+
     }
 
     private void demo(Canvas canvas) {
