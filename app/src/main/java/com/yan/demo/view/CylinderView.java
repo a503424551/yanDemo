@@ -51,6 +51,14 @@ public class CylinderView extends View {
     private int topTextOffset = 55;
     //从左往右数第一个柱状图距离Y轴便签的距离
     private int firstMarginLeft = 45;
+    private float circleY;
+    private float circleX;
+    //前一个黄色圆的原点XY轴坐标
+    private float frontCircley=0;
+    private float frontCircleX=0;
+    //黄色圆半径
+    private float yellowCircleRadius = arcRadius / 2;
+
 
     public CylinderView(Context context) {
         super(context);
@@ -63,8 +71,7 @@ public class CylinderView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        // demo(canvas);
-        cylinderLeng = getHeight() - marginButtom - marginTop;
+         cylinderLeng = getHeight() - marginButtom - marginTop;
         linesHight = cylinderLeng / 5;
         linesValue = yMaxValue / 5;
 
@@ -98,16 +105,16 @@ public class CylinderView extends View {
 
             leftForIndex = marginLeft + cylinderMargin * j + cylinderWith * j + firstMarginLeft;
             rightForIndex = marginLeft + cylinderMargin * j + cylinderWith * j + cylinderWith + firstMarginLeft;
-            //循环画柱状图顶部半圆
+            //循环画灰色柱状图顶部半圆
             RectF rectF = new RectF(leftForIndex, marginTop,
                     rightForIndex, marginTop + cylinderWith);
             canvas.drawArc(rectF, -180, 180, true, paint);
-            //循环画柱状图中间方形
+            //循环灰色画柱状图中间方形
             RectF rectF2 = new RectF(leftForIndex, marginTop + cylinderWith / 2,
                     rightForIndex,
                     getHeight() - marginButtom - arcRadius);
             canvas.drawRect(rectF2, paint);
-            //循环画柱状图底部半圆
+            //循环灰色画柱状图底部半圆
             RectF rectF3 = new RectF(leftForIndex, getHeight() - marginButtom - cylinderWith, rightForIndex,
                     getHeight() - marginButtom);
             canvas.drawArc(rectF3, 0, 180, true, paint);
@@ -120,64 +127,33 @@ public class CylinderView extends View {
             paint.setColor(cylinderColorBlue);
             //灰色部分高度
             float blueRectHight = cylinderLeng - (tem[j] / yMaxValue * cylinderLeng);
-
+            //循环画蓝色柱状图顶部半圆
             RectF rectFBlueTop = new RectF(leftForIndex, marginTop + blueRectHight, rightForIndex, marginTop + cylinderWith + blueRectHight);
             canvas.drawArc(rectFBlueTop, -180, 180, true, paint);
-
+            //循环画蓝色画柱状图中间方形
             RectF rectBlueMiddle = new RectF(leftForIndex, marginTop + blueRectHight + arcRadius, rightForIndex, getHeight() - marginButtom - arcRadius);
             canvas.drawRect(rectBlueMiddle, paint);
-
+            //循环画蓝色画柱状图底部半圆
             canvas.drawArc(rectF3, 0, 180, true, paint);
-
+            //循环画X轴坐标标签
             paint.setColor(topTextColor);
             canvas.drawText(new Float(yMaxValue).intValue() + "", leftForIndex, topTextOffset, paint);
 
             paint.setStrokeWidth(5);
             paint.setStyle(Paint.Style.STROKE);//设置空心
-            float circleY = cylinderLeng - tem2[j] / yMaxValue * cylinderLeng + marginTop;
-            float circleX = leftForIndex + arcRadius;
-            canvas.drawCircle(circleX, circleY, arcRadius / 2, paint);
+            circleY = cylinderLeng - tem2[j] / yMaxValue * cylinderLeng + marginTop;
+            circleX = leftForIndex + arcRadius;
+            //循环画黄色圆之间的蓝色线
+           if(j>0){
+               canvas.drawLine(frontCircleX+ yellowCircleRadius,frontCircley,circleX-yellowCircleRadius,circleY,paint);
+           }
+             frontCircley=circleY;
+             frontCircleX=circleX;
+            //循环画黄色圆
+            canvas.drawCircle(circleX, circleY, yellowCircleRadius, paint);
 
         }
 
     }
 
-    private void demo(Canvas canvas) {
-
-        //顶部画圆弧方形的左边距离app左边
-        float left = 100;
-        //顶部画圆弧方形的顶部距离视图顶部的距离
-        float firstTop = 50;
-        //顶部画圆弧方形的右边距离app左边
-        float right = 160;
-        //顶部画圆弧方形的底部距离视图顶部的距离
-        float firstBottom = 100;
-        //中间柱形高度
-        float height = 300;
-        float arcRadius;
-
-        //圆弧半径
-        arcRadius = (firstBottom - firstTop) / 2;
-        RectF rectF = new RectF(left, firstTop, right, firstBottom);
-        //   canvas.drawRect(rectF, paint);
-
-        //顶部圆弧
-        // paint.setColor(ContextCompat.getColor(getContext(),R.color.tem));
-        paint.setColor(Color.parseColor("#1CCFFA"));
-        paint.setStyle(Paint.Style.FILL);
-        canvas.drawArc(rectF, -180, 180, true, paint);
-
-        //中间柱形
-        // paint.setColor(Color.RED);
-
-        RectF rectF2 = new RectF(left, firstBottom - arcRadius, right, firstBottom + height + arcRadius);
-        canvas.drawRect(rectF2, paint);
-
-        //底部圆弧方形
-        RectF rectF3 = new RectF(left, firstBottom + height, right, firstBottom + height + firstBottom - firstTop);
-        //   paint.setColor(Color.BLUE);
-        //   canvas.drawRect(rectF3, paint);
-        // paint.setColor(Color.GRAY);
-        canvas.drawArc(rectF3, 0, 180, true, paint);
-    }
 }
