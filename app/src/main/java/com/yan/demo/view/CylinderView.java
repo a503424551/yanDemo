@@ -68,10 +68,8 @@ public class CylinderView extends View {
     private float frontCircleX = 0;
     //黄色圆半径
     private float yellowCircleRadius = arcRadius / 2;
-    private float tem;
-    private float tem1;
-    private float tem2;
     private RectF rectGraybuttom;
+    private float blueRectHight;
 
 
     public CylinderView(Context context) {
@@ -145,13 +143,17 @@ public class CylinderView extends View {
         paint.setColor(cylinderColorBlue);
         Log.d(getClass().getSimpleName(), "cylinderBeans.get(from).getBlueValue()==" + cylinderBeans.get(j).getBlueValue());
         //灰色部分高度
-        float blueRectHight = cylinderLeng - (cylinderBeans.get(j).getBlueValue() / yMaxValue * cylinderLeng);
-        //循环画蓝色柱状图顶部半圆
-        RectF rectFBlueTop = new RectF(leftForIndex, marginTop + blueRectHight, rightForIndex, marginTop + cylinderWith + blueRectHight);
-        canvas.drawArc(rectFBlueTop, -180, 180, true, paint);
-        //循环画蓝色画柱状图中间方形
-        RectF rectBlueMiddle = new RectF(leftForIndex, marginTop + blueRectHight + arcRadius, rightForIndex, getHeight() - marginButtom - arcRadius);
-        canvas.drawRect(rectBlueMiddle, paint);
+        blueRectHight = (cylinderBeans.get(j).getBlueValue() / yMaxValue * cylinderLeng);
+        if(blueRectHight>arcRadius){
+            float grayRectHight = cylinderLeng - blueRectHight;
+            //循环画蓝色柱状图顶部半圆
+            RectF rectFBlueTop = new RectF(leftForIndex, marginTop + grayRectHight, rightForIndex, marginTop + cylinderWith + grayRectHight);
+            canvas.drawArc(rectFBlueTop, -180, 180, true, paint);
+            //循环画蓝色画柱状图中间方形
+            RectF rectBlueMiddle = new RectF(leftForIndex, marginTop + grayRectHight + arcRadius, rightForIndex, getHeight() - marginButtom - arcRadius);
+            canvas.drawRect(rectBlueMiddle, paint);
+        }
+
         //循环画蓝色画柱状图底部半圆
         canvas.drawArc(rectGraybuttom, 0, 180, true, paint);
     }
