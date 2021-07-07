@@ -24,6 +24,7 @@ public class CylinderView extends View {
     private int lineColor = Color.parseColor("#D6D6D6");
     private int verticalTextColor = Color.parseColor("#F9696A");
     private Paint paint = new Paint();
+   private Paint ylineTextPaint = new Paint();
     //左边垂直坐标文字向下偏移量
     private float verticalTextButtomOffset = 10;
     //左边垂直坐标文字X轴坐标
@@ -179,23 +180,23 @@ public class CylinderView extends View {
     }
 
     private void darwYlineText(Canvas canvas) {
-        paint.setAntiAlias(true);
-        paint.setTextSize(30);
-        //画顶部第一根坐标线
-        paint.setColor(lineColor);
-        canvas.drawLine(marginLeft, marginTop, getWidth() - marginRight, marginTop, paint);
-        //画顶部第一根坐标值
-        paint.setColor(verticalTextColor);
+        ylineTextPaint.setAntiAlias(true);
+        ylineTextPaint.setTextSize(30);
+        //画顶部Y轴第一根坐标线
+        ylineTextPaint.setColor(lineColor);
+        canvas.drawLine(marginLeft, marginTop, getWidth() - marginRight, marginTop, ylineTextPaint);
+        //画顶部Y轴第一根坐标值
+        ylineTextPaint.setColor(verticalTextColor);
         int start=new Float(  yMaxValue/5).intValue();
-        canvas.drawText(new Float(yMaxValue).intValue()+ "", verticalTextLeftOffset, marginTop + verticalTextButtomOffset, paint);
+        canvas.drawText(new Float(yMaxValue).intValue()+ "", verticalTextLeftOffset, marginTop + verticalTextButtomOffset, ylineTextPaint);
 
 
-        //画剩余第坐标线和坐标值
+        //画剩余Y轴的坐标线和坐标值
         for (int i = 1; i < 6; i++) {
-            paint.setColor(lineColor);
-            canvas.drawLine(marginLeft, marginTop + linesHight * i, getWidth() - marginRight, marginTop + linesHight * i, paint);
-            paint.setColor(verticalTextColor);
-            canvas.drawText( new Float(yMaxValue).intValue()-start*i+ "", verticalTextLeftOffset, marginTop + linesHight * i + verticalTextButtomOffset, paint);
+            ylineTextPaint.setColor(lineColor);
+            canvas.drawLine(marginLeft, marginTop + linesHight * i, getWidth() - marginRight, marginTop + linesHight * i, ylineTextPaint);
+            ylineTextPaint.setColor(verticalTextColor);
+            canvas.drawText( new Float(yMaxValue).intValue()-start*i+ "", verticalTextLeftOffset, marginTop + linesHight * i + verticalTextButtomOffset, ylineTextPaint);
 
         }
     }

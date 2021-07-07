@@ -1,5 +1,6 @@
 package com.yan.demo;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class CylinderActivity extends AppCompatActivity {
+public class CylinderActivity extends Activity {
     private List<CylinderBean> cylinderBeans = new ArrayList<>();
     private CylinderView mCylinderView;
 
