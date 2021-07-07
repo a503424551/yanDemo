@@ -15,23 +15,26 @@ import java.util.Random;
 public class CylinderActivity extends Activity {
     private List<CylinderBean> cylinderBeans = new ArrayList<>();
     private CylinderView mCylinderView;
+    private int yMaxValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cylinder);
         initView();
+        yMaxValue = 60;
+
         for (int i = 0; i < 10; i++) {
             CylinderBean cylinderBean = new CylinderBean();
-            cylinderBean.setBlueValue(24/*new Random().nextInt(25)*/);
+            cylinderBean.setBlueValue( new Random().nextInt(yMaxValue) );
             cylinderBean.setName("张大"+i);
             cylinderBean.setNo(3001);
             cylinderBean.setYellowValue(12);
             cylinderBeans.add(cylinderBean);
         }
-        mCylinderView.
+       mCylinderView.
                 setCylinderBeans(cylinderBeans)
-                .setyMaxValue(60)
+                .setyMaxValue(yMaxValue)
                 .postInvalidate();
 
     }
