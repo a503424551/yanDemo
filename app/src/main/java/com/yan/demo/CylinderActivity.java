@@ -29,7 +29,7 @@ public class CylinderActivity extends Activity {
             cylinderBean.setBlueValue( new Random().nextInt(yMaxValue) );
             cylinderBean.setName("张大"+i);
             cylinderBean.setNo(3001);
-            cylinderBean.setYellowValue(12);
+            cylinderBean.setYellowValue(24);
             cylinderBeans.add(cylinderBean);
         }
        mCylinderView.

@@ -102,6 +102,7 @@ public class CylinderView extends View {
         linesHight = cylinderLeng / 5;
         linesValue = yMaxValue / 5;
         darwYlineText(canvas);
+        paint.setAntiAlias(true);
         paint.setStyle(Paint.Style.FILL);
         for (int j = 0; j < cylinderBeans.size(); j++) {
             paint.setStyle(Paint.Style.FILL);
