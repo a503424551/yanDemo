@@ -8,3 +8,6 @@
 3  自定义直角进度  
     功能：可动态设置水平进度圆圈个数  
      ![Image text](https://github.com/a503424551/yanDemo/blob/master/image/rightAngleProgress.png)  
+4  自定义圆形柱状图  
+    功能：可动态设置y轴最大值，黄色圆圈y轴坐标等功能
+     ![Image text](https://github.com/a503424551/yanDemo/blob/master/image/Cylinder.gif)  
