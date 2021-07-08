@@ -22,7 +22,7 @@ public class CylinderActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cylinder);
         initView();
-        yMaxValue = 60;
+        yMaxValue = new Random().nextInt(40)+20;
 
         for (int i = 0; i < 10; i++) {
             CylinderBean cylinderBean = new CylinderBean();

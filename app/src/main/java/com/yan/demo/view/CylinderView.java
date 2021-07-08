@@ -148,8 +148,9 @@ public class CylinderView extends View {
         bluePaint.setColor(cylinderColorBlueStart);
 
         if (blueRectHight > arcRadius) {
-            backGradient = new LinearGradient(leftForIndex, marginTop + grayRectHight, leftForIndex,
-                    getHeight() - marginButtom, new int[]{cylinderColorBlueStart, cylinderColorBlueMiddle, cylinderColorBlueMiddleEnd}, null, Shader.TileMode.CLAMP);
+            backGradient = new LinearGradient(leftForIndex, marginTop + grayRectHight,
+                    leftForIndex,getHeight() - marginButtom,
+                    new int[]{cylinderColorBlueStart, cylinderColorBlueMiddle, cylinderColorBlueMiddleEnd}, null, Shader.TileMode.CLAMP);
         } else {
             backGradient = new LinearGradient(leftForIndex, getHeight() - marginButtom - cylinderWith, leftForIndex,
                     getHeight() - marginButtom, new int[]{cylinderColorBlueStart, cylinderColorBlueMiddle, cylinderColorBlueMiddleEnd}, null, Shader.TileMode.CLAMP);
