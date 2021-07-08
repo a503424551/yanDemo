@@ -14,6 +14,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * 自定义柱状图2
      */
     private Button mCylinderView;
+    /**
+     * 自定义进度
+     */
+    private Button mProductProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initView() {
         mCylinderView = (Button) findViewById(R.id.CylinderView);
         mCylinderView.setOnClickListener(this);
+        mProductProgress = (Button) findViewById(R.id.product_progress);
+        mProductProgress.setOnClickListener(this);
     }
 
     @Override
@@ -58,6 +64,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.CylinderView:
                 intent = new Intent(MainActivity.this, CylinderActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.product_progress:
+                intent = new Intent(MainActivity.this, ProductProgressActivity.class);
                 startActivity(intent);
                 break;
         }
