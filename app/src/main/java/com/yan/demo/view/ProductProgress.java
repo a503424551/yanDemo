@@ -19,6 +19,7 @@ public class ProductProgress extends View {
     private int gouSecondPointXOffset;
     private int gouSecondPointYOffset;
     private int gouLengForSecondPointXOffset;
+    private int lineLeng;
 
     public ProductProgress(Context context) {
         super(context);
@@ -48,11 +49,15 @@ public class ProductProgress extends View {
         gouSecondPointYOffset = 30;
         //勾第二笔右上边点X轴距离底部角度交叉点X轴的距离
         gouLengForSecondPointXOffset = 50;
+        //直线长
+        lineLeng = 220;
+        //直线距离勾的长度
+        float lineMarginGou = 50;
         canvas.drawLine(gouFirstPointX, gouFirstPointY, gouFirstPointX + gouLengForFirstPointX, gouLengForFirstPointY + gouFirstPointY, paint);
-    canvas.drawLine(gouFirstPointX + gouLengForFirstPointX -gouSecondPointXOffset, gouFirstPointY + gouLengForFirstPointY,
-            gouFirstPointX + gouLengForFirstPointX + gouLengForSecondPointXOffset, gouFirstPointY- gouSecondPointYOffset, paint);
-        canvas.drawLine(gouFirstPointX+gouLengForFirstPointX+gouLengForSecondPointXOffset,(gouFirstPointY+gouLengForFirstPointY)/2+ gouSecondPointYOffset,
-                (gouFirstPointX+gouLengForFirstPointX+gouLengForSecondPointXOffset)+160,(gouFirstPointY+gouLengForFirstPointY)/2+ gouSecondPointYOffset,paint);
+        canvas.drawLine(gouFirstPointX + gouLengForFirstPointX - gouSecondPointXOffset, gouFirstPointY + gouLengForFirstPointY,
+                gouFirstPointX + gouLengForFirstPointX + gouLengForSecondPointXOffset, gouFirstPointY - gouSecondPointYOffset, paint);
+        canvas.drawLine(gouFirstPointX + gouLengForFirstPointX + gouLengForSecondPointXOffset + lineMarginGou, (gouFirstPointY + gouLengForFirstPointY) / 2 + gouSecondPointYOffset,
+                (gouFirstPointX + gouLengForFirstPointX + gouLengForSecondPointXOffset) + lineLeng + lineMarginGou, (gouFirstPointY + gouLengForFirstPointY) / 2 + gouSecondPointYOffset, paint);
 
     }
 }
