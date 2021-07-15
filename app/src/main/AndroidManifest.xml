@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         >
-        <activity android:name=".ProductProgressActivity"  ></activity>
         <activity android:name=".CylinderActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -24,7 +23,7 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".CircleActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".RightAngleProgressActivity"
             android:screenOrientation="landscape" />
