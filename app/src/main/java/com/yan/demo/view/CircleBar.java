@@ -26,6 +26,7 @@ public class CircleBar extends View {
     //已经画好的传入值占据圆环的度数
     private float[] sweepAngle;
     private Paint paint = new Paint();
+    private Paint centerPaint = new Paint();
     //圆环间的间隔
     private float mar = 0;
     private float alreadSweepAngle;
@@ -47,6 +48,7 @@ public class CircleBar extends View {
     private int centerSizeOffsetForY;
     private Path path;
     private float[] coords;
+    private int crevice;
 
     public CircleBar(Context context) {
         super(context);
@@ -69,6 +71,8 @@ public class CircleBar extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        Log.d(getClass().getSimpleName(), "onDraw==");
+
         if (circlebean == null) {
             //     Toast.makeText(getContext(), "请传入相对应", Toast.LENGTH_SHORT).show();
             return;
@@ -92,10 +96,14 @@ public class CircleBar extends View {
         }
 
         //采用默认设置创建一个画笔
+
         paint.setAntiAlias(true);//使用抗锯齿功能
         paint.setStyle(Paint.Style.STROKE);//
+
         float diameter = getWidth() / 3;
+
         RectF rectF = new RectF(diameter, diameter, diameter * 2, diameter * 2);
+
         darwCenterText(canvas, rectF);
         alreadSweepAngle = 0.0f;
 
@@ -118,7 +126,9 @@ public class CircleBar extends View {
             LinearGradient linearGradient = new LinearGradient(startDrawX, startDrawy, coords[0], coords[1],
                     circlebean.getCirclePartBeanList().get(j).getColors(), null, Shader.TileMode.CLAMP);
             paint.setShader(linearGradient);
-            canvas.drawArc(rectF, -90 + alreadSweepAngle + mar * j, sweepAngle[j], false, paint);//绘制圆弧，不含圆心
+            //补充每部分圆弧之间的缝隙
+            crevice = 5;
+            canvas.drawArc(rectF, -90 + alreadSweepAngle + mar * j, sweepAngle[j]+ crevice, false, paint);//绘制圆弧，不含圆心
             startDrawX = coords[0];
             startDrawy = coords[1];
             drawLineAndText(canvas, rectF, j);
@@ -219,19 +229,19 @@ public class CircleBar extends View {
     }
 
     private void darwCenterText(Canvas canvas, RectF rectF) {
-        paint.setTextSize(50);
-        paint.setColor(centerUpColor);
+        centerPaint.setTextSize(50);
+        centerPaint.setColor(centerUpColor);
         //中心描述文字相对原点往左偏移量
         centerTextOffsetForX = 90;
         //中心描述文字相对原点往上偏移量
         centerTextOffsetForY = 30;
-        canvas.drawText(circlebean.getCenterText(), rectF.centerX() - centerTextOffsetForX, rectF.centerY() - centerTextOffsetForY, paint);
-        paint.setColor(centerDowColor);
-        paint.setTextSize(55);
+        canvas.drawText(circlebean.getCenterText(), rectF.centerX() - centerTextOffsetForX, rectF.centerY() - centerTextOffsetForY, centerPaint);
+        centerPaint.setColor(centerDowColor);
+        centerPaint.setTextSize(55);
         //中心数量文字相对原点往左偏移量
         centerSizeOffsetForX = 60;
         //中心数量文字相对原点往上偏移量
         centerSizeOffsetForY = 20;
-        canvas.drawText(circlebean.getCenterSize(), rectF.centerX() - centerSizeOffsetForX, rectF.centerY() + paint.getTextSize() - centerTextOffsetForY + centerSizeOffsetForY, paint);
+        canvas.drawText(circlebean.getCenterSize(), rectF.centerX() - centerSizeOffsetForX, rectF.centerY() + centerPaint.getTextSize() - centerTextOffsetForY + centerSizeOffsetForY, centerPaint);
     }
 }
