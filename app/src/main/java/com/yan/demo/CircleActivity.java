@@ -18,36 +18,32 @@ public class CircleActivity extends Activity {
     private int[] color3 = {Color.parseColor("#0350FE"), Color.parseColor("#0186FF"), Color.parseColor("#02A7FF")};
 
     private CircleBar circleBar;
-    private List<Integer> integers;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-   /*     CircleBar circleBar = new CircleBar(this);
-        circleBar.setValueAndColors(values, color);
-        circleBar.postInvalidate();
-        setContentView(circleBar);*/
 
 
         setContentView(R.layout.circle);
         circleBar  =findViewById(R.id.circle);
         Circlebean circlebean=new Circlebean();
-        circlebean.setCenterSize(90 + "件");
-        circlebean.setCenterText("质检数量");
+        circlebean.setCenterSize(90 + "人");
+        circlebean.setCenterText("总人口数");
         List<Circlebean.CirclePartBean> circlePartBeanList = new ArrayList<>();
 
 
         Circlebean.CirclePartBean circlePartBean = new Circlebean.CirclePartBean();
         circlePartBean.setNumericalValue(values[0]);
-        circlePartBean.setLineUptext(Math.round(values[0]) + "件");
-        circlePartBean.setLineDowntext("不良率：" + Math.round(((values[0] / 90) * 100)) + "%");
+        circlePartBean.setLineUptext(Math.round(values[0]) + "人");
+        circlePartBean.setLineDowntext("男性：" + Math.round(((values[0] / 90) * 100)) + "%");
         circlePartBean.setColors(color2);
         circlePartBeanList.add(circlePartBean);
 
         circlePartBean = new Circlebean.CirclePartBean();
         circlePartBean.setNumericalValue(values[1]);
-        circlePartBean.setLineUptext(Math.round(values[1]) + "件");
-        circlePartBean.setLineDowntext("合格率：" + Math.round(((values[1] / 90) * 100)) + "%");
+        circlePartBean.setLineUptext(Math.round(values[1]) + "人");
+        circlePartBean.setLineDowntext("女性：" + Math.round(((values[1] / 90) * 100)) + "%");
         circlePartBean.setColors(color3);
         circlePartBeanList.add(circlePartBean);
 
