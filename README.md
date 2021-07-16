@@ -2,8 +2,8 @@
 1 自定义柱状图   
     功能:可动态设置Y轴最大值，y轴刻度线数量和柱状图个数，  
     ![Image text](https://github.com/a503424551/yanDemo/blob/master/image/histogramView.png)  
-2  自定义圆环占比， 
-    功能：可动态设置圆环占比的类型个数和每个类型的颜色  
+2  自定义圆环占比 
+    功能：可动态设置圆环占比的类型个数、每个类型的渐变颜色、文本描述
     ![Image text](https://github.com/a503424551/yanDemo/blob/master/image/circle.png)  
 3  自定义直角进度  
     功能：可动态设置水平进度圆圈个数  
