@@ -11,3 +11,7 @@
 4  自定义圆形柱状图  
     功能：可动态设置y轴最大值，黄色圆圈y轴坐标等功能
      ![Image text](https://github.com/a503424551/yanDemo/blob/master/image/Cylinder.gif)  
+5  自定义进度条
+    功能：根据设计稿顶部UI的各个百分比，在不同的屏幕自适应，可展示大于3步或仅3步的UI效果
+    <video src="https://github.com/a503424551/yanDemo/blob/master/image/Progress.mp4" controls="controls" width="500" height="300">您的浏览器不支持播放该视频！</video>
+ 

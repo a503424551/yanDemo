@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <com.yan.demo.view.ProgressView
+        android:id="@+id/nev"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_centerInParent="true" />
+
+
+    <Button
+        android:id="@+id/b_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="上一步"/>
+    <Button
+        android:id="@+id/b_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="下一步"/>
+    <Button
+        android:id="@+id/b_more_three"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="大于3步"/>
+    <Button
+        android:id="@+id/b_only_three"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="只有于3步"/>
+</LinearLayout>

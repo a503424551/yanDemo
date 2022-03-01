@@ -7,7 +7,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
     private Intent intent;
     /**
@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initView();
         findViewById(R.id.histogram_view).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,25 +43,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-
-    }
-
-    private void initView() {
-        mCylinderView = (Button) findViewById(R.id.CylinderView);
-        mCylinderView.setOnClickListener(this);
-
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            default:
-                break;
-            case R.id.CylinderView:
+        findViewById(R.id.CylinderView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 intent = new Intent(MainActivity.this, CylinderActivity.class);
                 startActivity(intent);
-                break;
+            }
+        });
 
-        }
+        findViewById(R.id.progress).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(MainActivity.this, ProgressActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
+
+
 }
