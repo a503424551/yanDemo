@@ -30,5 +30,5 @@
         android:id="@+id/b_only_three"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="只有于3步"/>
+        android:text="只有3步"/>
 </LinearLayout>
