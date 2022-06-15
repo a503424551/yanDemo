@@ -16,6 +16,6 @@
     ![Image text](https://github.com/a503424551/yanDemo/blob/master/image/Progress.png)
     ![Image text](https://github.com/a503424551/yanDemo/blob/master/image/Progress.gif)  
 5  自定义仪表盘评估值
-    功能：根据设计稿顶部UI的各个百分比，在不同的屏幕自适应，可展示相应分值得弧度和等级文字
+    功能：根据设计稿UI的各个百分比，在不同的屏幕自适应，可展示相应分值得弧度和等级文字
 
 https://user-images.githubusercontent.com/7124218/173729952-c15b795f-b150-4a0e-9d7f-af3d1a83a176.mp4
