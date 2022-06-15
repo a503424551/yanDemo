@@ -3,8 +3,6 @@ package com.yan.demo;
 import android.app.Activity;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.yan.demo.bean.CylinderBean;
 import com.yan.demo.view.CylinderView;
 
@@ -40,6 +38,6 @@ public class CylinderActivity extends Activity {
     }
 
     private void initView() {
-        mCylinderView = (CylinderView) findViewById(R.id.CylinderView);
+        mCylinderView = (CylinderView) findViewById(R.id.cylinder_view);
     }
 }

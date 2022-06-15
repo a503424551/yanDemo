@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.CylinderView).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.cylinder_view).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 intent = new Intent(MainActivity.this, CylinderActivity.class);
@@ -58,7 +58,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        findViewById(R.id.score_cirle).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(MainActivity.this, ScoreCirleActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
